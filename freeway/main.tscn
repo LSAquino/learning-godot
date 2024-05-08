@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://tu3d64if3bo2"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_smi52"]
+[ext_resource type="Texture2D" uid="uid://bomblq7e1uu3a" path="res://Material freeway/wallpaperfreeway.png" id="1_spvxq"]
+[ext_resource type="PackedScene" uid="uid://g1c4datq1cr0" path="res://ganha.tscn" id="2_qj20a"]
+[ext_resource type="PackedScene" uid="uid://bhejte6o5hyct" path="res://player.tscn" id="3_ideuk"]
+[ext_resource type="PackedScene" uid="uid://dhm0ycfehm61h" path="res://player_2.tscn" id="4_s4mtj"]
+[ext_resource type="FontFile" uid="uid://cmfkfklqakcea" path="res://Material freeway/PressStart2P-Regular.ttf" id="6_qhhy3"]
+[ext_resource type="AudioStream" uid="uid://ci2glqtpqwsir" path="res://Material freeway/sons/ponto.wav" id="7_xrgh3"]
+[ext_resource type="AudioStream" uid="uid://duutjnum3u47g" path="res://Material freeway/sons/ganhou.wav" id="8_lt8e1"]
+[ext_resource type="AudioStream" uid="uid://c33gpmfnl1qhn" path="res://Material freeway/sons/tema.wav" id="9_f7oax"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_smi52")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_spvxq")
+centered = false
+
+[node name="ganha" parent="." instance=ExtResource("2_qj20a")]
+position = Vector2(638.66, 64)
+
+[node name="player" parent="." instance=ExtResource("3_ideuk")]
+position = Vector2(320, 696)
+
+[node name="player2" parent="." instance=ExtResource("4_s4mtj")]
+position = Vector2(944, 696)
+
+[node name="horacarrorapido" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="horacarrodevagar" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="placar1" type="Label" parent="."]
+offset_left = 300.0
+offset_top = 10.0
+offset_right = 330.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 0.984314, 0.0235294, 1)
+theme_override_fonts/font = ExtResource("6_qhhy3")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+
+[node name="placar2" type="Label" parent="."]
+offset_left = 920.0
+offset_top = 10.0
+offset_right = 950.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 0.984314, 0.0235294, 1)
+theme_override_fonts/font = ExtResource("6_qhhy3")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+
+[node name="resultado" type="Label" parent="."]
+offset_top = 10.0
+offset_right = 584.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 0.984314, 0.0235294, 1)
+theme_override_fonts/font = ExtResource("6_qhhy3")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="ponto" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xrgh3")
+
+[node name="ganhou" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_lt8e1")
+
+[node name="tema" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_f7oax")
+volume_db = -18.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = 485.0
+offset_top = 307.0
+offset_right = 836.0
+offset_bottom = 398.0
+theme_override_colors/font_color = Color(1, 0.984314, 0.0235294, 1)
+theme_override_fonts/font = ExtResource("6_qhhy3")
+theme_override_font_sizes/font_size = 30
+text = "Reiniciar"
+
+[connection signal="pontua" from="player" to="." method="_on_player_pontua"]
+[connection signal="pontua2" from="player2" to="." method="_on_player_2_pontua_2"]
+[connection signal="timeout" from="horacarrorapido" to="." method="_on_horacarrorapido_timeout"]
+[connection signal="timeout" from="horacarrodevagar" to="." method="_on_horacarrodevagar_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

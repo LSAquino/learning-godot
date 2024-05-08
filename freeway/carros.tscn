@@ -1,0 +1,153 @@
+[gd_scene load_steps=18 format=3 uid="uid://dyaj8ekg5geon"]
+
+[ext_resource type="Script" path="res://carros.gd" id="1_vyscu"]
+[ext_resource type="Texture2D" uid="uid://dq8w5s32han7b" path="res://Material freeway/carros/coches (1).png" id="2_lnj1i"]
+[ext_resource type="Texture2D" uid="uid://bgufv4pgyrvih" path="res://Material freeway/carros/coches (2).png" id="3_os260"]
+[ext_resource type="Texture2D" uid="uid://dao8t6rlckkx5" path="res://Material freeway/carros/coches (3).png" id="4_eyaqt"]
+[ext_resource type="Texture2D" uid="uid://dn6pj15mb8uob" path="res://Material freeway/carros/coches (12).png" id="5_p55cj"]
+[ext_resource type="Texture2D" uid="uid://bi2orafst6wlf" path="res://Material freeway/carros/coches (13).png" id="6_b7wdc"]
+[ext_resource type="Texture2D" uid="uid://cyldoiq3o6nxn" path="res://Material freeway/carros/coches (14).png" id="7_1emad"]
+[ext_resource type="Texture2D" uid="uid://cf6mt4tod46vq" path="res://Material freeway/carros/coches (4).png" id="8_geibh"]
+[ext_resource type="Texture2D" uid="uid://plaixr41o6ow" path="res://Material freeway/carros/coches (5).png" id="9_26x1b"]
+[ext_resource type="Texture2D" uid="uid://f60qlb1ux163" path="res://Material freeway/carros/coches (6).png" id="10_57v5g"]
+[ext_resource type="Texture2D" uid="uid://dvryqyre41gy0" path="res://Material freeway/carros/coches (7).png" id="11_lhe18"]
+[ext_resource type="Texture2D" uid="uid://dfs5bobgoa6n3" path="res://Material freeway/carros/coches (8).png" id="12_de3tq"]
+[ext_resource type="Texture2D" uid="uid://fu35y6xapjvi" path="res://Material freeway/carros/coches (9).png" id="13_fwinp"]
+[ext_resource type="Texture2D" uid="uid://dxsh8ne73np72" path="res://Material freeway/carros/coches (10).png" id="14_fmv85"]
+[ext_resource type="Texture2D" uid="uid://dlexye58gjadq" path="res://Material freeway/carros/coches (11).png" id="15_axqie"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfncq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lnj1i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_os260")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_eyaqt")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_p55cj")
+}],
+"loop": true,
+"name": &"new_animation_10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_b7wdc")
+}],
+"loop": true,
+"name": &"new_animation_11",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_1emad")
+}],
+"loop": true,
+"name": &"new_animation_12",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_geibh")
+}],
+"loop": true,
+"name": &"new_animation_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_26x1b")
+}],
+"loop": true,
+"name": &"new_animation_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_57v5g")
+}],
+"loop": true,
+"name": &"new_animation_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_lhe18")
+}],
+"loop": true,
+"name": &"new_animation_5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_de3tq")
+}],
+"loop": true,
+"name": &"new_animation_6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_fwinp")
+}],
+"loop": true,
+"name": &"new_animation_7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_fmv85")
+}],
+"loop": true,
+"name": &"new_animation_8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_axqie")
+}],
+"loop": true,
+"name": &"new_animation_9",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8fx0"]
+size = Vector2(47, 30)
+
+[node name="carros" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_vyscu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_rfncq")
+animation = &"new_animation_10"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_e8fx0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
