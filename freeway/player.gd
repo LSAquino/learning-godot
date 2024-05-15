@@ -10,9 +10,9 @@ func _ready():
 
 func _process(delta):
 	var velocity = Vector2()
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("desce"):
 		velocity.y += 1
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("sobe"):
 		velocity.y -= 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed

@@ -29,11 +29,11 @@ func _on_horacarrodevagar_timeout():
 
 
 func _on_player_pontua():
-	if score1 < 2:
+	if score1 < 3:
 		score1 += 1
 		$ponto.play()
 		$placar1.text = str(score1)
-	if score1 >= 2:
+	if score1 >= 3:
 		$Button.show()
 		$tema.stop()
 		$resultado.text = "P1 Ganhou!"
@@ -43,18 +43,18 @@ func _on_player_pontua():
 
 
 func _on_player_2_pontua_2():
-	if score2 < 2:
+	if score2 < 3:
 		score2 += 1
 		$ponto.play()
 		$placar2.text = str(score2)
-	if score2 >= 2:
+	if score2 >= 3:
 		$Button.show()
 		$tema.stop()
 		$resultado.text = "P2 Ganhou!"
 		$ganhou.play()
 		$horacarrodevagar.stop()
 		$horacarrorapido.stop()
-
+		
 
 func _on_button_pressed():
 	$Button.hide()
